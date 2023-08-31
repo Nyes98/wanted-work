@@ -4,10 +4,14 @@ import { Link } from 'react-router-dom';
 import { styled } from 'styled-components';
 
 export default function Main() {
+    const [issueData, setIssueData] = useState<any>([]);
     const apiUrl = 'https://api.github.com/repos/facebook/react/issues';
-    const [issueData, setIssueData] = useState<any[]>([]);
+    // const accessToken = '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';
+    const accessToken = process.env.REACT_APP_ACCESS_TOKEN;
     const [loading, setLoading] = useState(false);
     const [page, setPage] = useState(1);
+
+    console.log('이거', accessToken);
 
     const callIssueData = async (page: number) => {
         try {
@@ -57,7 +61,7 @@ export default function Main() {
             });
 
             if (newData) {
-                setIssueData((prevData) => [...prevData, ...newDataWithAds]);
+                setIssueData((prevData: any) => [...prevData, ...newDataWithAds]);
             }
             setLoading(false);
         };
