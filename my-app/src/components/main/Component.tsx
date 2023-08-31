@@ -5,7 +5,6 @@ import { styled } from 'styled-components';
 
 export default function Main() {
     const apiUrl = 'https://api.github.com/repos/facebook/react/issues';
-    const accessToken = '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';
     const [issueData, setIssueData] = useState<any[]>([]);
     const [loading, setLoading] = useState(false);
     const [page, setPage] = useState(1);

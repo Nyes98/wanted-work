@@ -7,7 +7,6 @@ import ReactMarkdown from 'react-markdown';
 export default function Detail() {
     const params = useParams();
     const apiUrl = `https://api.github.com/repos/facebook/react/issues/${params.number}`;
-    const accessToken = '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';
     const [issueData, setIssueData] = useState<any>();
 
     const callIssueData = async () => {
