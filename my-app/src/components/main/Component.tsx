@@ -5,7 +5,7 @@ import { styled } from 'styled-components';
 
 export default function Main() {
     const apiUrl = 'https://api.github.com/repos/facebook/react/issues';
-    const accessToken = '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';
+    const accessToken = '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';
     const [issueData, setIssueData] = useState<any[]>([]);
     const [loading, setLoading] = useState(false);
     const [page, setPage] = useState(1);
@@ -17,7 +17,6 @@ export default function Main() {
                     Authorization: `token ${accessToken}`,
                 },
                 params: {
-                    state: 'open',
                     sort: 'comments',
                     page: page,
                 },
@@ -83,7 +82,7 @@ export default function Main() {
                             alt="ad"
                         ></img>
                     ) : (
-                        <>
+                        <StyeldLink to={`/detail/${item.number}`}>
                             <Info>
                                 <Title>
                                     <div>#{item.number}</div>
@@ -95,7 +94,7 @@ export default function Main() {
                                 </Contnents>
                             </Info>
                             <Comment>코멘트:{item.comments}</Comment>
-                        </>
+                        </StyeldLink>
                     )}
                 </Card>
             ))}
@@ -103,6 +102,13 @@ export default function Main() {
         </>
     );
 }
+
+const StyeldLink = styled(Link)`
+    text-decoration: none;
+    color: black;
+    display: flex;
+    width: 100%;
+`;
 
 const Loading = styled.div`
     font-weight: 800;
